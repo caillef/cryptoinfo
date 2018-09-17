@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div
+      each val in [{link: '/', title: 'Home - FIFA statistics'}, {link: '/football', title: 'World Cup champions'}, {link: '/goldenball', title: 'Golden Ball winners'}]
+        div
+          a(href=val.link)= val.title
+    block content
