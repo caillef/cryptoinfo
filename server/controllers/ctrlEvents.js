@@ -4,7 +4,7 @@ const eventsList = function (req, res) {
       date: '26/09/2018 19:30',
       name: 'Meetup for crypto-enthusiasts (Espoo)'
     }, {
-      date: '30/09/2018 14h',
+      date: '30/09/2018 14:00',
       name: 'Blockchain for Beginners (Helsinki)'
     }, {
       date: '04/10/2018 19:00',
