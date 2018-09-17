@@ -5,7 +5,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     div
-      each val in [{link: '/', title: 'Home - FIFA statistics'}, {link: '/football', title: 'World Cup champions'}, {link: '/goldenball', title: 'Golden Ball winners'}]
+      each val in [{link: '/', title: 'Home - CryptoInfo'}, {link: '/events', title: 'Events about blockchain in Finland'}, {link: '/crypto', title: 'TOP 10 cryptocurrencies'}]
         div
           a(href=val.link)= val.title
     block content

@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const ctrlMain = require('../controllers/ctrlMain');
-const ctrlFootball = require('../controllers/ctrlFootball');
-const ctrlGoldenBall = require('../controllers/ctrlGoldenBall');
+const ctrlCrypto = require('../controllers/ctrlCrypto');
+const ctrlEvents = require('../controllers/ctrlEvents');
 
 router.get('/', ctrlMain.index);
-router.get('/football', ctrlFootball.winnerlist);
-router.get('/goldenball', ctrlGoldenBall.winnerlist);
+router.get('/crypto', ctrlCrypto.cryptoList);
+router.get('/events', ctrlEvents.eventsList);
 
 module.exports = router;

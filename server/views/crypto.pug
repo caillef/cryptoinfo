@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Top 10 cryptocurrencies
+  ul
+    each currency, index in cryptocurrencies
+      li= `${index + 1}: ${currency.name} $${currency.price}`

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Events about blockchain in Finland
+  ul
+    each event in events
+      li= `${event.date}: ${event.name}`
