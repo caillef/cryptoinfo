@@ -1,11 +1,26 @@
 doctype html
-html
+html(lang="en")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
   body
-    div
-      each val in [{link: '/', title: 'Home - CryptoInfo'}, {link: '/events', title: 'Events about blockchain in Finland'}, {link: '/crypto', title: 'TOP 10 cryptocurrencies'}]
-        div
-          a(href=val.link)= val.title
-    block content
+    nav.navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='/')
+        img(src='images/cryptoinfo.png', width='30', height='30', alt='')
+        |     Crypto Info
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav
+          each val in [{link: '/', title: 'Home'}, {link: '/crypto', title: 'Top 10'}, {link: '/events', title: 'Events'}]
+            a.nav-item.nav-link(href=val.link)= val.title
+
+    div.container.p-3.mb-5
+      block content
+
+  footer.page-footer.font-small.blue
+    .footer-copyright.text-center.py-3
+      | © 2018 Copyright:
+      a(href='https://cailleaud.azurewebsites.net/crypto') https://cailleaud.azurewebsites.net/crypto
+  script(src="js/bootstrap.min.js")

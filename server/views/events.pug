@@ -1,7 +1,11 @@
 extends layout
 
 block content
-  h1 Events about blockchain in Finland
+  h1.mb-3.text-center.text-primary Events about blockchain in Finland
   ul
     each event in events
-      li= `${event.date}: ${event.name}`
+      .card.mb-2
+        .card-header= event.date
+        .card-body
+          h5.card-title= event.name
+            a.float-right.btn.btn-primary(href='#') I want to go !
