@@ -1,5 +1,21 @@
 db.dropDatabase();
 
+db.events.save(
+    [{
+        date: '26/09/2018 19:30',
+        name: 'Meetup for crypto-enthusiasts (Espoo)'
+    }, {
+        date: '30/09/2018 14:00',
+        name: 'Blockchain for Beginners (Helsinki)'
+    }, {
+        date: '04/10/2018 19:00',
+        name: 'Investors - How can you invest in crypto-currencies (Helsinki)'
+    }, {
+        date: '07/10/2018 14:00',
+        name: 'Seminar impact of blockchain technology on industries (Helsinki)'
+    }]
+)
+
 db.cryptocurrencies.save(
     [{
         name: 'Bitcoin',
@@ -41,21 +57,5 @@ db.cryptocurrencies.save(
         name: 'Cardano',
         logo: 'https://s2.coinmarketcap.com/static/img/coins/64x64/328.png',
         price: 0.068857
-    }]
-)
-
-db.events.save(
-    [{
-        date: '26/09/2018 19:30',
-        name: 'Meetup for crypto-enthusiasts (Espoo)'
-    }, {
-        date: '30/09/2018 14:00',
-        name: 'Blockchain for Beginners (Helsinki)'
-    }, {
-        date: '04/10/2018 19:00',
-        name: 'Investors - How can you invest in crypto-currencies (Helsinki)'
-    }, {
-        date: '07/10/2018 14:00',
-        name: 'Seminar impact of blockchain technology on industries (Helsinki)'
     }]
 )
