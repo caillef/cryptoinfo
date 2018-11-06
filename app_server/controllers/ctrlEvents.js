@@ -1,20 +1,31 @@
-const eventsList = function (req, res) {
-  res.render('events', {
-    events: [{
-      date: '26/09/2018 19:30',
-      name: 'Meetup for crypto-enthusiasts (Espoo)'
-    }, {
-      date: '30/09/2018 14:00',
-      name: 'Blockchain for Beginners (Helsinki)'
-    }, {
-      date: '04/10/2018 19:00',
-      name: 'Investors - How can you invest in crypto-currencies (Helsinki)'
-    }, {
-      date: '07/10/2018 14:00',
-      name: 'Seminar impact of blockchain technology on industries (Helsinki)'
-    }]
+const request = require('request')
+const apiURL = require('./apiURLs')
 
-  });
+const eventsList = function(req, res){
+  const path = '/api/events'
+  const requestOptions = {
+    url: `${apiURL.server}${path}`,
+    method: 'GET',
+    json: {},
+    qs: {}
+  }
+
+  request(
+    requestOptions,
+    (err, response, body) => {
+      if (err) {
+        res.render('error', {message: err.message})
+      } else if (response.statusCode !== 200) {
+        res.render('error', {message: `Error accessing API : ${response.statusMessage} (${response.statusCode})`})
+      } else if (!(body instanceof Array)) {
+        res.render('error', {message: 'Unexpected response data'})
+      } else if (!body.length) {
+        res.render('error', {message: 'No documents in collection'})
+      } else {
+        res.render('events', {events: body})
+      }
+    }
+  )
 };
 
 module.exports = {
