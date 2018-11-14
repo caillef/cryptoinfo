@@ -1,6 +1,38 @@
 const request = require('request')
 const apiURL = require('./apiURLs')
 
+const showForm = (req, res) => {
+  res.render('crypto_add')
+}
+
+const addData = (req, res) => {
+  const path = '/api/crypto'
+
+  const postdata = {
+    name: req.body.name,
+    price: req.body.price,
+    logo: req.body.logo
+  }
+
+  const requestOptions = {
+    url: `${apiURL.server}${path}`,
+    method: 'POST',
+    json: postdata,
+  }
+  request(
+    requestOptions,
+    (err, response, body) => {
+      if (response.statusCode === 201) {
+        res.redirect('/crypto');
+      } else {
+        res.render('error', {
+          message: `Error adding data: ${response.statusMessage} (${response.statusCode})`
+        })
+      }
+    }
+  )
+}
+
 const cryptoList = function(req, res){
   const path = '/api/crypto'
   const requestOptions = {
@@ -29,5 +61,7 @@ const cryptoList = function(req, res){
 };
 
 module.exports = {
-  cryptoList
+  cryptoList,
+  showForm,
+  addData
 } 

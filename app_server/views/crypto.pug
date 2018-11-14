@@ -1,12 +1,11 @@
 extends layout
 
 block content
-  // HTML   <h1 class="text-center text-primary mb-3></h1>"
-  // PUG 1  h1(class="text-center text-primary mb-3")
-  // PUG 2  h1.text-center.text-primary.mb-3
   h1.text-center.text-primary.mb-3 Top 10 cryptocurrencies
+  .text-center.m-3
+    a(href='/crypto/add')
+      button.btn.btn-primary Add a new cryptocurrency
   each currency, index in cryptocurrencies
-    // .card -> <div class="card">
     .card.bg-light.mb-2
       .card-header= `Rank ${index + 1}`
       .card-body

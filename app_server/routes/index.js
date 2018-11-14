@@ -9,4 +9,9 @@ router.get('/', ctrlMain.index);
 router.get('/crypto', ctrlCrypto.cryptoList);
 router.get('/events', ctrlEvents.eventsList);
 
+router
+    .route('/crypto/add')
+    .get(ctrlCrypto.showForm)
+    .post(ctrlCrypto.addData);
+
 module.exports = router;

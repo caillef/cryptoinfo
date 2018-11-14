@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .row
+        h4 New cryptocurrency
+    form(action="", method="post")
+        .form-group.row
+            label Name
+                input.form-control(name="name")
+        .form-group.row
+            label Price
+                input.form-control(name="price")
+        .form-group.row
+            label Logo url
+                input.form-control(name="logo")
+        .form-group.row
+            button.btn-primary Add
