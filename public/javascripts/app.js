@@ -4,8 +4,7 @@ const deleteCrypto = (name) => {
         method: 'DELETE',
         body: blob
       })
-    .then((response) => {
+    .then(() => {
         document.location.reload();
-        return response.json();
     });
 }
