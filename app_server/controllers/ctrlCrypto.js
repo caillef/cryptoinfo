@@ -6,7 +6,7 @@ const showForm = (req, res) => {
 }
 
 const addData = (req, res) => {
-  const path = '/api/crypto'
+  const path = '/api/crypto';
 
   const postdata = {
     name: req.body.name,
@@ -23,18 +23,50 @@ const addData = (req, res) => {
     requestOptions,
     (err, response, body) => {
       if (response.statusCode === 201) {
+        req.method = 'GET';
         res.redirect('/crypto');
       } else {
         res.render('error', {
           message: `Error adding data: ${response.statusMessage} (${response.statusCode})`
-        })
+        });
+      }
+    }
+  )
+}
+
+const removeData = (req, res) => {
+  const path = '/api/crypto';
+
+  const postdata = {
+    name: req.body.name
+  }
+
+  if (postdata.name === undefined || postdata.name.length <= 0) {
+    res.render('error', {message: 'Error removing data: Name is not defined'});
+    return;
+  }
+
+  const requestOptions = {
+    url: `${apiURL.server}${path}`,
+    method: 'DELETE',
+    json: postdata,
+  }
+  request(
+    requestOptions,
+    (err, response, body) => {
+      if (response.statusCode === 201) {
+        res.send('Removed');
+      } else {
+        res.render('error', {
+          message: `Error removing data: ${response.statusMessage} (${response.statusCode})`
+        });
       }
     }
   )
 }
 
 const cryptoList = function(req, res){
-  const path = '/api/crypto'
+  const path = '/api/crypto';
   const requestOptions = {
     url: `${apiURL.server}${path}`,
     method: 'GET',
@@ -63,5 +95,6 @@ const cryptoList = function(req, res){
 module.exports = {
   cryptoList,
   showForm,
-  addData
-} 
+  addData,
+  removeData
+};

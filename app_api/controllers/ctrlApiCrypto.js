@@ -22,7 +22,18 @@ const addCrypto = (req, res) => {
   })
 }
 
+const removeCrypto = (req, res) => {
+  cryptoModel.deleteOne(req.body, (err, deleteStatus) => {
+    if (err) {
+      res.status(404).json(err)
+    } else {
+      res.status(201).json(deleteStatus)
+    }
+  })
+}
+
 module.exports = {
   cryptoList,
-  addCrypto
+  addCrypto,
+  removeCrypto
 } 

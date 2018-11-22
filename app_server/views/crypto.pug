@@ -10,4 +10,6 @@ block content
       .card-header= `Rank ${index + 1}`
       .card-body
         h5.card-title= `${currency.name} $${currency.price}`
+          button.ml-3.btn.btn-secondary.float-right(onclick=`deleteCrypto('${currency.name}')`) X
           img(src=`${currency.logo}`, width='30', height='30', alt='').float-right
+          

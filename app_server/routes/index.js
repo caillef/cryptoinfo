@@ -6,7 +6,10 @@ const ctrlCrypto = require('../controllers/ctrlCrypto');
 const ctrlEvents = require('../controllers/ctrlEvents');
 
 router.get('/', ctrlMain.index);
-router.get('/crypto', ctrlCrypto.cryptoList);
+router
+    .route('/crypto')
+    .get(ctrlCrypto.cryptoList)
+    .delete(ctrlCrypto.removeData);
 router.get('/events', ctrlEvents.eventsList);
 
 router

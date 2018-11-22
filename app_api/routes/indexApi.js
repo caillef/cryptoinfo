@@ -8,6 +8,7 @@ router
     .route('/crypto')
     .get(ctrlCrypto.cryptoList)
     .post(ctrlCrypto.addCrypto)
+    .delete(ctrlCrypto.removeCrypto)
     
 router
     .route('/events')
