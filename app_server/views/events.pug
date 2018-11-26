@@ -2,6 +2,9 @@ extends layout
 
 block content
   h1.mb-3.text-center.text-primary Events about blockchain in Finland
+  .text-center.m-3
+    a(href='/events/add')
+      button.btn.btn-primary Add a new event
   ul
     each event in events
       .card.mb-2
