@@ -1,6 +1,10 @@
 const request = require('request')
 const apiURL = require('./apiURLs')
 
+const showForm = (req, res) => {
+  res.render('event_add')
+}
+
 const eventsList = function(req, res){
   const path = '/api/events'
   const requestOptions = {
@@ -28,6 +32,38 @@ const eventsList = function(req, res){
   )
 };
 
+
+
+const addData = (req, res) => {
+  const path = '/api/events';
+
+  const postdata = {
+    name: req.body.name,
+    date: req.body.date
+  }
+
+  const requestOptions = {
+    url: `${apiURL.server}${path}`,
+    method: 'POST',
+    json: postdata,
+  }
+  request(
+    requestOptions,
+    (err, response, body) => {
+      if (response.statusCode === 201) {
+        req.method = 'GET';
+        res.redirect('/events');
+      } else {
+        res.render('error', {
+          message: `Error adding data: ${response.statusMessage} (${response.statusCode})`
+        });
+      }
+    }
+  )
+}
+
 module.exports = {
-  eventsList
+  eventsList,
+  addData,
+  showForm
 }

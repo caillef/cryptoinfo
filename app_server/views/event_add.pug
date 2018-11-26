@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    .row
+        h4 New event
+    form(action="", method="post")
+        .form-group.row
+            label Name
+                input.form-control(name="name")
+        .form-group.row
+            label Date (DD/MM/YYYY HH:MM)
+                input.form-control(name="date")
+        .form-group.row
+            button.btn-primary Add

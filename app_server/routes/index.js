@@ -10,11 +10,16 @@ router
     .route('/crypto')
     .get(ctrlCrypto.cryptoList)
     .delete(ctrlCrypto.removeData);
-router.get('/events', ctrlEvents.eventsList);
 
 router
     .route('/crypto/add')
     .get(ctrlCrypto.showForm)
     .post(ctrlCrypto.addData);
+
+router.get('/events', ctrlEvents.eventsList);
+router
+    .route('/events/add')
+    .get(ctrlEvents.showForm)
+    .post(ctrlEvents.addData);    
 
 module.exports = router;
